@@ -1,84 +1,74 @@
 <?php
 /**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package usagi
+ * Comments template
  */
 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
 if ( post_password_required() ) {
+	?>
+	<p class="nocomments"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'usagi' ); ?></p>
+	<?php
 	return;
 }
-?>
 
-<div id="comments" class="comments-area">
+if ( have_comments() ) :
 
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'usagi' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			?>
-		</h2>
-
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'usagi' ); ?></h2>
-			<div class="nav-links">
-
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'usagi' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'usagi' ) ); ?></div>
-
-			</div>
-		</nav>
-		<?php endif; // Check for comment navigation. ?>
-
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
-			?>
-		</ol>
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'usagi' ); ?></h2>
-			<div class="nav-links">
-
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'usagi' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'usagi' ) ); ?></div>
-
-			</div>
-		</nav>
+	?>
+	<h3 id="comments">
 		<?php
-		endif; // Check for comment navigation.
+		printf(
+			// Translators: %1$s is the number of comments, %2$s is the post title
+			esc_html( _n( '%1$s Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'usagi' ) ),
+			esc_html( number_format_i18n( get_comments_number() ) ),
+			get_the_title()
+		);
+		?>
+	</h3>
 
-	endif; // Check for have_comments().
+	<ol class="commentlist">
+		<?php
+		wp_list_comments(
+			array(
+				'avatar_size' => 64,
+			)
+		);
+		?>
+	</ol>
+	<?php
 
+	if ( usagi_page_has_comments_nav() ) :
+		?>
+		<div class="comments_nav">
+		<?php
+		if ( usagi_page_has_previous_comments_link() ) :
+			?>
+			<div class="previous navbutton">
+				<?php previous_comments_link( '<i class="fa fa-angle-double-left"></i>' . __( 'Older comments', 'usagi' ) ); ?>
+			</div>
+			<?php
+		endif;
 
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'usagi' ); ?></p>
+		if ( usagi_page_has_next_comments_link() ) :
+			?>
+			<div class="next navbutton">
+				<?php next_comments_link( __( 'Newer comments', 'usagi' ) . '<i class="fa fa-angle-double-right"></i>' ); ?>
+			</div>
+			<?php
+		endif;
+	?>
+	</div>
 	<?php
 	endif;
 
-	comment_form();
-	?>
+else : // If there are no comments yet
 
-</div>
+	if ( ! comments_open() ) : // If comments are closed
+		?>
+		<p class="nocomments"><?php esc_html_e( 'Comments are closed.', 'usagi' ); ?></p>
+		<?php
+	endif;
+
+endif;
+
+if ( comments_open() ) :
+	comment_form();
+endif;

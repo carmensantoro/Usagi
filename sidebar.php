@@ -1,17 +1,44 @@
 <?php
 /**
- * The sidebar containing the main widget area
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
  *
- * @package usagi
+ * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
+ *
+ * Sidebar Template
+ *
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
+<ul id="sidebar">
+	<?php
+	if ( ! dynamic_sidebar( 'sidebar' ) ) :
+		?>
+		<li id="recent" class="widget-container">
+			<h3 class="widget-title"><?php esc_html_e( 'Recent Posts', 'usagi' ); ?></h3>
+			<ul><?php wp_get_archives( 'type=postbypost&limit=5' ); ?></ul>
+		</li>
 
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside>
+		<li id="archives" class="widget-container">
+			<h3 class="widget-title"><?php esc_html_e( 'Archives', 'usagi' ); ?></h3>
+			<ul><?php wp_get_archives( 'type=monthly' ); ?></ul>
+		</li>
+
+		<li id="meta" class="widget-container">
+			<h3 class="widget-title"><?php esc_html_e( 'Meta', 'usagi' ); ?></h3>
+			<ul>
+				<?php
+				wp_register();
+				?>
+				<li>
+					<?php wp_loginout(); ?>
+				</li>
+				<?php
+				wp_meta();
+				?>
+			</ul>
+		</li>
+		<?php
+	endif;
+	?>
+</ul>
