@@ -1,37 +1,98 @@
 <?php
 /**
- * The template for displaying all pages
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
  *
- * @package usagi
+ * Page Template
+ *
  */
 
-get_header(); ?>
+get_header();
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+get_template_part( 'part-title' );
 
-			<?php
-			while ( have_posts() ) : the_post();
+?>
+<div class="container" id="main-content">
+	<div id="page-container" <?php post_class( 'with-sidebar' ); ?>>
+		<?php
 
-				get_template_part( 'components/page/content', 'page' );
+		if ( have_posts() ) :
+			while ( have_posts() ) :
+				the_post();
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
+				if ( '' !== get_the_post_thumbnail() ) :
+				?>
+				<div class="thumbnail">
+					<?php
+					the_post_thumbnail(
+						'large',
+						array(
+							'class' => 'scale-with-grid',
+						)
+					);
+					?>
+				</div>
+				<?php
 				endif;
 
-			endwhile; // End of the loop.
-			?>
+				the_content();
 
-		</main>
+				wp_link_pages(
+					array(
+						'before'           => '<br class="clear" /><div class="paged_nav"><span>' . __( 'Pages:', 'usagi' ) . '</span>',
+						'after'            => '</div>',
+						'link_before'      => '<span>',
+						'link_after'       => '</span>',
+						'next_or_number'   => 'number',
+						'pagelink'         => '%',
+						'echo'             => 1,
+					)
+				);
+
+				?>
+				<br class="clear" />
+				<?php
+
+				edit_post_link(
+					__( 'Edit', 'usagi' ),
+					'<div class="postmetadata"><span class="editlink"><i class="fa fa-pencil"></i>',
+					'</span></div>'
+				);
+
+				// Display comments section only if comments are open or if there are comments already.
+				if ( comments_open() || '0' !== get_comments_number() ) :
+					?>
+					<div class="comments">
+						<?php
+						comments_template( '', true );
+						next_comments_link();
+						previous_comments_link();
+						?>
+					</div>
+					<?php
+				endif;
+
+	endwhile;
+
+	else : // Empty loop (this should never happen!)
+
+		?>
+		<h2><?php esc_html_e( 'Not Found', 'usagi' ); ?></h2>
+		<p><?php esc_html_e( 'What you are looking for isn\'t here...', 'usagi' ); ?></p>
+		<?php
+
+	endif;
+
+	?>
 	</div>
+
+	<div id="sidebar-container">
+		<?php get_sidebar(); ?>
+	</div>
+
+</div>
 <?php
-get_sidebar();
+
 get_footer();

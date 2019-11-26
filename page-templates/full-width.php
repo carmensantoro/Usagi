@@ -1,12 +1,6 @@
 <?php
 /**
- *
- * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
- *
- * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
- *
  * Template Name: Full-width Page Template, No Sidebar
- *
  */
 
 get_header();
