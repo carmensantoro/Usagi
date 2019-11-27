@@ -1,6 +1,6 @@
 <?php
 /**
- * 404 Page Template *
+ * 404 Page Template
  */
 
 get_header();
