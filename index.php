@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Full-width Page Template, No Sidebar
- */
 
 get_header();
 

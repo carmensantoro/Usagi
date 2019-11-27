@@ -1,6 +1,7 @@
 <?php
 /**
  * Page Template
+ * Template Name: Template con sidebar
  */
 
 get_header();

@@ -1,6 +1,7 @@
 <?php
 /**
  * Single Post Template
+ * Template Name: Singolo post con sidebar
  */
 
 get_header();
