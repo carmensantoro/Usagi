@@ -26,17 +26,22 @@ endif;
 				esc_html( date( 'Y' ) ),
 				esc_html( get_bloginfo( 'name' ) )
 			);
-			echo ' ';
+			echo '<br>';
 			printf(
-				wp_kses_post( __( 'Proudly powered by <a href="%1$s" title="%2$s">%3$s</a>.', 'usagi' ) ),
+				wp_kses_post( __( 'Powered by <a href="%1$s" title="%2$s">%3$s</a>.', 'usagi' ) ),
 				esc_url( __( 'https://wordpress.org/', 'usagi' ) ),
 				esc_attr__( 'Semantic Personal Publishing Platform', 'usagi' ),
 				esc_html__( 'WordPress', 'usagi' )
 			);
-			echo ' ';
+			echo '<br>';
 			printf(
-				wp_kses_post( __( 'Usagi design by %s.', 'usagi' ) ),
+				wp_kses_post( __( 'Usagi design di %s.', 'usagi' ) ),
 				'<a href="https://www.carmensantoro.it">Carmen Agnese Santoro</a>'
+			);
+			echo '<br>';
+			printf(
+				wp_kses_post( __( 'Font del logo Squared Display di %s.', 'usagi' ) ),
+				'<a href="https://www.behance.net/vikaskumar">Vikas Kumar</a>'
 			);
 			?>
 
