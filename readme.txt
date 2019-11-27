@@ -1,1 +1,2 @@
-Usagi- Sushi bar for a project.
+Usagi- Sushi bar
+It's a project for Start2impact. 

@@ -1,12 +1,6 @@
 <?php
 /**
- *
- * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
- *
- * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
- *
  * Single Post Template
- *
  */
 
 get_header();
