@@ -1,5 +1,12 @@
 /*
-Theme Name: usagi
+	Theme Name: Usagi
+	Theme URI: https://usagi-sushibar.it
+	Author: Carmen Agnese Santoro
+	Licence: GNU General Public Licence v2 or later
+	Licence URI: https://www.gnu.org/licenses/gpl-2.0.html
+  Version: 1.0
+  Description: Usagi SushiBar - Progetto per Start2impact in cui ho creato un tema per un finto ristorante giapponese. 
+	Tags: Ristorante, Giapponese, Sushi, Sashimi, Sushibar
 */
 
 
@@ -20,15 +27,6 @@ Theme Name: usagi
 
 }
 
-@font-face {
-    font-family: 'latoblack';
-    src: url('fonts/lato-black-webfont.woff2') format('woff2'),
-         url('fonts/lato-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 body{
   font-family: "latobold";
 }
@@ -39,7 +37,7 @@ height: 100%;
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
-background-size: 67%;
+background-size: 75%;
 border-top: 300px;
 }
 

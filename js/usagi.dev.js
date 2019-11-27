@@ -1,10 +1,5 @@
 /**
- * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
- * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
- * Javascripts
- *
- * Dependencies:
- * - Superfish
+ * usagi WordPress Theme
  */
 
  /* --- (document).ready function wrap --- */

@@ -1,12 +1,6 @@
 <?php
 /**
- *
- * usagi WordPress Theme by Iceable Themes | https://www.iceablethemes.com
- *
- * Copyright 2014-2019 Iceable Media - Mathieu Sarrasin
- *
  * Theme's Function
- *
  */
 
 /*
@@ -60,7 +54,7 @@ function usagi_setup() {
 		'custom-background',
 		array(
 			'default-color' => '111111',
-			'default-image' => USAGI_THEME_DIR_URI . '/img/zwartevilt.png',
+			'default-image' => USAGI_THEME_DIR_URI . '/img/background.png',
 		)
 	);
 
@@ -145,7 +139,7 @@ function usagi_styles() {
 	wp_register_style( 'usagi-style', get_theme_file_uri( 'style.css' ), array(), USAGI_THEME_VERSION );
 
 	// Load font-awesome
-	wp_register_style( 'font-awesome', get_theme_file_uri( 'css/font-awesome/css/font-awesome.css' ), array(), USAGI_THEME_VERSION );
+	wp_register_style( 'font-awesome', get_theme_file_uri( 'fonts/font-awesome/css/font-awesome.css' ), array(), USAGI_THEME_VERSION );
 
 	wp_enqueue_style( 'usagi' );
 	wp_enqueue_style( 'usagi-style' );
