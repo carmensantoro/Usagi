@@ -6,5 +6,4 @@ Licence: GNU General Public Licence v2 or later
 Licence URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-Usagi- Sushi bar
-It's a project for Start2impact. 
+Usagi SushiBar - Progetto per Start2impact in cui ho creato un tema per un finto ristorante giapponese.  
